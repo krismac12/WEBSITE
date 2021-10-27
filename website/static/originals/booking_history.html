@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Saria Oberstar 10749985">
+    <title>Feed Me</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+
+    <link href="CSS/UserBookingHistory.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+        integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+</head>
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="bootstrap" viewBox="0 0 118 94">
+        <title>Bootstrap</title>
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z">
+        </path>
+    </symbol>
+    <symbol id="home" viewBox="0 0 16 16">
+        <path
+            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+    </symbol>
+
+    <symbol id="calender-event" viewBox="0 0 16 16">
+        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+        <path
+            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+
+    </symbol>
+
+    <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        <path fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+    </symbol>
+
+    <symbol id="plus-square" viewBox="0 0 16 16">
+        <path <path
+            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+        <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+    </symbol>
+    <symbol id="checkcircle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+        <path
+            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+    </symbol>
+
+    <symbol id="circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+    </symbol>
+
+
+</svg>
+
+
+<header>
+    <div class="px-2 py-2 bg-light text-dark sticky-top">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="index.html"
+                    class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-dark text-decoration-none">
+                    <img src="Img/Feedmelogo.png" width="50" height="50">
+                </a>
+
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li>
+                        <a href="index.html" class="nav-link text-secondary">
+                            <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                                <use xlink:href="#home" />
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="UserBookingHistory.html" class="nav-link text-dark">
+                            <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                                <use xlink:href="#calender-event" />
+                            </svg>
+                            Booked Events
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="EventCreation.html" class="nav-link text-secondary">
+                            <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                                <use xlink:href="#plus-square" />
+                            </svg>
+                            Create Event
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="nav-link text-secondary" id="dropdownuser2" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                                <use xlink:href="#people-circle" />
+                            </svg>
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+
+
+
+<main>
+
+    <div class="container p-3 px-1 mb-5 maintext">
+        <div class="col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 pb-2">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                        <a href="#"
+                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                            <span class="fs-4">Booking History</span>
+                        </a>
+                        <hr>
+
+                        <ul>
+                            <a1 href="#" class="nav-link link-dark">Dashboard</a1>
+                            <a1 href="#" class="nav-link link-dark">Order Options</a1>
+                            <a1 href="#" class="nav-link link-dark">Payment and Tax</a1>
+                            <a1 href="#" class="nav-link link-dark">Refunds and Credits</a1>
+                            <hr>
+                            <a1 href="#" class="nav-link link-dark">Privacy Settings</a1>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 pb-2 pt-2">
+                    <div class="album pt-2 pb-4">
+                        <div class="container">
+                            <h1>Upcoming Events</h1>
+                            <hr class="m-2">
+                            <br>
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+                                <div class="col">
+                                    <div class="card shadow-sm">
+                                        <img src="Img/dimsumd.jpeg" class="card-img-top" alt="..." width=100% height="225">
+
+                                        <div class="card-body">
+                                            <h3>Dim Sum Disco</h3>
+                                            <p3>Booking ID: 1759DHD</p3>
+                                            <p class="card-text">Winter is here and so are our cocktail teapots! Indulge
+                                                in 2 hours of bubbles, beer, cocktails + dim sum banquet, every Sun from
+                                                2pm.
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a href="#" type="button"
+                                                        class="btn btn-sm btn-outline-secondary">View</a>
+                                                </div>
+                                                <small class="text-muted">Booked: 17th September 2021</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card shadow-sm">
+                                        <img src="Img/donut.jpeg" class="card-img-top" alt="..." width=100% height="225">
+
+                                        <div class="card-body">
+                                            <h3>Donut Decorating</h3>
+                                            <p3>Booking ID: 759HY2</p3>
+                                            <p class="card-text">Armed with icing and sprinkles, let the kids
+                                                imagination and taste buds run wild with our Donut Decorating workshop
+                                                thanks to Donut King!
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-outline-secondary">View</button>
+
+                                                </div>
+                                                <small class="text-muted">Booked: 18th August 2021</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 pb-2 pt-2">
+                        <div class="album pt-2 pb-4">
+                            <div class="container">
+                                <h1>Past Events</h1>
+                                <hr class="m-2">
+
+                                <br>
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+                                            <img src="Img/Eventmain.jpg" class="card-img-top" alt="..." width=100% height="225">
+
+                                            <div class="card-body">
+                                                <h3>Brunch With a Bite</h3>
+                                                <p3>Booking ID: 1759DHD</p3>
+                                                <p class="card-text">Featuring the same riotous personalities and shows that have become a Sunday staple for Brisbane's most fabulous!
+                                                </p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <a href="EventDetails.html" type="button"
+                                                            class="btn btn-sm btn-outline-secondary">View</a>
+
+                                                    </div>
+                                                    <small class="text-muted">Booked: 5th September 2020</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+                                            <img src="Img/grazelunch.jpeg" class="card-img-top" alt="..." width=100% height="225">
+
+                                            <div class="card-body">
+                                                <h3>Saturday Grazing Lunch</h3>
+                                                <p3>Booking ID: 450QUV</p3>
+                                                <p class="card-text">Cloudland's Saturday Graze is the only way to 'lunch' on a Saturday afternoon and it's back for a big summer in 2021!
+                                                </p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary">View</button>
+
+                                                    </div>
+                                                    <small class="text-muted">Booked: 4th Feburary 2021</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+                                            <img src="Img/BC.jpeg" class="card-img-top" alt="..." width=100% height="225">
+
+                                            <div class="card-body">
+                                                <h3>Beer and Cheese Tasting</h3>
+                                                <p3>Booking ID: 9842HR</p3>
+                                                <p class="card-text">Let us take you on a journey into the wonderful world of beer and cheese pairing; through six styles of beer with cheeses that compliment perfectly.
+                                                </p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <a href="EventDetails.html" type="button"
+                                                            class="btn btn-sm btn-outline-secondary">View</a>
+
+                                                    </div>
+                                                    <small class="text-muted">Booked: 4th March 2021</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+                                            <img src="Img/mass.jpeg" class="card-img-top" alt="..." width=100% height="225">
+
+                                            <div class="card-body">
+                                                <h3>Massimo Degustation</h3>
+                                                <p3>Booking ID: 231HJU</p3>
+                                                <p class="card-text">Enjoy six courses of authentic Italian flavours, with an exquisite selection of wines derived from Italian grape varieties, grown and made here in Australia.
+                                                </p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary">View</button>
+
+                                                    </div>
+                                                    <small class="text-muted">Booked: 8th July 2021</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="bg-light text-center text-dark mt-2">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-dark mb-4">
+                                Subscribe
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>
+            <!-- Section: Form -->
+
+
+
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-dark">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-dark">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-dark">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-dark">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="#">Saria Oberstar</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+</html>

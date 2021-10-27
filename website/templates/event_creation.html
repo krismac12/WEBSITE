@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 pb-2">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                        <a href="#"
+                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                            <span class="fs-4">Create an Event</span>
+                        </a>
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item pill-1">
+                                <a href="#" class="nav-link active" aria-current="page">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#checkcircle" />
+                                    </svg>
+                                    Basic Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#circle" />
+                                    </svg>
+                                    Additional Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#circle" />
+                                    </svg>
+                                    Ticketing
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#circle" />
+                                    </svg>
+                                    Confirmation
+                                </a>
+                            </li>
+
+                        </ul>
+                        <hr>
+
+                        <ul>
+                            <a1 href="#" class="nav-link link-dark">Dashboard</a1>
+                            <a1 href="#" class="nav-link link-dark">Order Options</a1>
+                            <a1 href="#" class="nav-link link-dark">Payment and Tax</a1>
+                            <a1 href="#" class="nav-link link-dark">Marketing</a1>
+                            <a1 href="#" class="nav-link link-dark">Manage Attendees</a1>
+                            <a1 href="#" class="nav-link link-dark">Reports</a1>
+                            <hr>
+                            <a1 href="#" class="nav-link link-dark">Privacy Settings</a1>
+                        </ul>
+
+                    </div>
+                </div>
+                <form method="POST">
+                <div class="col-lg-9 col-md-9 col-sm-12 pb-2 pt-2">
+                    <div class="card rounded shadow p-3">
+                        <h1>Basic Information
+                        </h1>
+                        <hr class="m-2">
+                        <div class="col-sm-12 col-lg-12 pb-4 px-4">
+                            <label for="ControlInput1">Event Name</label>
+                            {{form.name (class="form-control", id="ControlInput1",
+                            placeholder="Clear and Descriptive" )}}
+                            <br>
+
+                            <label for="ControlInput1">Organiser</label>
+                            {{form.organiser (class="form-control", id="ControlInput1",
+                            placeholder="Tell the attendees who organised this event" )}}   
+
+                            <br>
+
+                            <label for="ControlSelect1">Type</label>
+                            {{form.type (class="form-control", id="ControlInput1",
+                            placeholder="Select" )}}
+                        </div>
+                    </div>
+                    
+
+                    <div class="row">
+                        <div class="col-8 col-sm-12 col-md-12 col-lg-6">
+                            <div class="card rounded shadow mt-4 p-3">
+                                <h1>Location</h1>
+                                <p3>Help people in the area discover your event and let attendees know where to show up.
+                                </p3>
+                                <hr class="m-2">
+                                <div class="col-sm-12 col-lg-12 pb-4 px-4">
+                                    <label for="ControlInput1">Enter Address</label>
+                                    {{form.street (class="form-control me-2 mb-3", id="ControlInput1",
+                                    placeholder="Street" )}}
+                                    {{form.city (class="form-control me-2 mb-3", id="ControlInput1",
+                                    placeholder="City" )}}
+                                    {{form.state (class="form-control me-2 mb-3", id="ControlInput1",
+                                    placeholder="State" )}}
+                                    {{form.postcode (class="form-control me-2 mb-3", id="ControlInput1",
+                                    placeholder="Postcode" )}}
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <div class="card rounded shadow mt-4 p-3">
+
+                                <h1>Date and Time</h1>
+                                <p3>Tell event-goers when your event starts and ends so they can make plans to attend.
+                                </p3>
+                                <hr class="m-2">
+
+                                <div class="col-sm-12 col-lg-12 pt-2 pb-4 px-4">
+                                    <label for="ControlInput1">Start Date/Time:</label>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <label for="ControlInput1" class="$-4">End Date/Time:</label>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="card rounded shadow mt-4 p-3">
+                            <h1>Event Image</h1>
+                            <p3>Tell event-goers when your event starts and ends so they can make plans to attend.</p3>
+                            <hr class="m-2">
+                            {{form.image}}
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="card rounded shadow mt-4 p-3">
+                            <h1>Description</h1>
+                            <hr class="m-2">
+                            <div class="col-sm-12 col-lg-12 pb-4 px-4">
+                                <label for="exampleFormControlTextarea1">Description of Event</label>
+                                {{form.description (class="form-control", id="exampleFormControlTextarea1",
+                                rows = "3" )}}
+                            </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 offset-md-10 pt-3">
+                        {{form.submit (class="btn btn-primary",id="submit",rows="3",value="Save Event" )}}
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+{% endblock %}

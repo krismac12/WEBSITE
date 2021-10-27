@@ -1,0 +1,124 @@
+/* GLOBAL STYLES - BOOKING HISTORY
+-------------------------------------------------- */
+
+html {
+position: relative;
+min-height: 100%;
+max-width: 100%;
+}
+
+
+/* HEADER STYLES
+-------------------------------------------------- */
+  .header {
+    position: static;
+    top: 0;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+  
+  .text-small {
+    font-size: 85%;
+  }
+  
+  /* MAIN BODY STYLES
+  -------------------------------------------------- */
+  /* Banner Image */
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/* Sidebar*/
+/* Nav Bar Style */
+.nav-pills .pill-1 .nav-link {
+  background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+
+ .navlinks a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 20px;
+    margin-right: 15px;
+    padding: 4px;
+    display: inline-block;
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-family: "monaco";
+ }
+
+ .navlinks a1 {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 20px;
+ 
+  padding: 1px;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 3px;
+  font-family: "monaco";
+}
+
+
+
+/* CUSTOMISE THE CAROUSEL
+-------------------------------------------------- */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.maintext p {
+  text-align: justify;
+  font-weight: 400;
+  /* letter-spacing: 2px; */
+  margin-bottom: 30px;
+  
+}
+
+.maintext p1 {
+  
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  
+}
+
+.maintext p2 {
+  font-weight: 400;
+  letter-spacing: 3px; 
+}
+
+.maintext p3 {
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+/* .maintext p {
+  font-weight: 400;
+  text-align: justify;
+  letter-spacing: 3px;
+  margin-right: 10rem;
+  margin-left: 10rem;
+} */
+
+
+/* Footer */
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}

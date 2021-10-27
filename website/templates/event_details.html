@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="row">
+    <div class="pt-5 col-md-12 col-lg-12">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{events[12]}}" class="center" alt="Responsive image"
+                    style="width: 1200px; height: 337px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+
+    <div class="container maintext">
+        <div class="card rounded shadow">
+            <div class="col-md-12 col-lg-12 p-2">
+                <h1>{{events[2]}}</h1>
+                <div class="row p-2">
+                    <div class="col-lg-8">
+                        <p>{{events[3]}}</p>
+                    </div>
+                    <div class="col-lg-4 row justify-content-start">
+                        <p class="col-auto"><strong>Date and Time</strong><br>{{events[5]}}<br>{{events[6]}}<br>
+                            <strong>Location</strong><br>{{events[8]}}</p>
+                        <div class="row justify-content-center">
+                            <button type="button" class="btn btn-primary col-auto" data-bs-toggle="modal" data-bs-target="#booking-modal">Buy Tickets</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-lg-8 p-2">
+                        <p class="text-maintain-whitespace">{{events[4]}}</p>
+                        <p><strong>Official Ticket Resale Platform</strong><br>{{events[11]}}</p>
+                    </div>
+                    <div class="col-lg-4 p-2">
+                        <iframe src="{{events[9]}}" 
+                        width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-3 px-1 maintext">
+        <div class="col-md-12 col-lg-12 ">
+            <div class="card rounded shadow">
+            {% if current_user.is_authenticated %}
+            <form method = 'post'>
+                <div class="col-sm-12 col-lg-12 py-4 px-4">
+                    <h3>Leave a Review</h3>
+                    <hr class="m-2">
+                    {{wtf.quick_form(form)}}
+                </div>
+            </form>
+            {% else %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-3 px-1 maintext">
+        <div class="col-md-12 col-lg-12">
+            <div class="card rounded shadow">
+                <div class="row">
+                    <div class="col-lg-12 px-4 pt-2 pb-2">
+                        <h3>All Ratings and Reviews</h3>
+                        <!-- <button type="button" class="btn btn-primary">View More</button> -->
+                    </div>
+                </div>
+
+                {% for Review in Reviews %}
+                <div class="row">
+                    <div class="col-lg-1 col-md-1">
+                        <div class="col d-flex align-items-center justify-content-center">
+                            <a class="d-flex align-items-center">
+                                <img src="/static/img/profile.png" width="50" height="50">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-2 ">
+                        <p2>{{Review.user_name}}</p2>
+                        <br>
+                        <p3>{{ Review.date.strftime('%Y-%m-%d') }}</p3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 offset-md-1 pb-3">
+                        <p1>{{Review.text}}</p1>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div id="event-modal">
+    <div class="modal fade" id="booking-modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label">Book Tickets - {{events[2]}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-12 mb-3">
+                            <div id="event-form">
+                                <div class="card background">
+                                    <div class="card-body">
+                                        <h5>Booking Details</h5>
+                                        <div class="row mt-3">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="booking-first-name">First Name</span>
+                                                    <input type="text" class="form-control" aria-label="First Name" aria-describedby="booking-first-name">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="booking-last-name">Last Name</span>
+                                                    <input type="text" class="form-control" aria-label="Last Name" aria-describedby="booking-last-name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="email-input">Email</span>
+                                            <input type="text" class="form-control" aria-label="Email" aria-describedby="email-input">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">Card Name</span>
+                                                    <input type="text" class="form-control" aria-label="Card Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">CSV</span>
+                                                    <input type="text" class="form-control" aria-label="CSV">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">Expiry</span>
+                                                    <input type="text" class="form-control" aria-label="Card Expiry">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                                                <div class="input-group mb-4">
+                                                    <span class="input-group-text">Card Number</span>
+                                                    <input type="text" class="form-control" aria-label="Card Number">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5>Terms and Conditions</h5>
+                                        <p>{{events[13]}}</p>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for Terms and Conditions">
+                                            </div>
+                                            <span class="input-group-text" id="terms-and-conditions">I agree to the above terms and conditions.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-12">
+                            <div class="card background mb-3">
+                                <div class="row g-0">
+                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <img src="{{events[12]}}" class="img-fluid rounded-start card-image" alt="Festival Image">
+                                    </div>
+                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Order Summary</h5>
+                                            <div class="input-group mb-3 mt-3">
+                                                <span class="input-group-text" id="ticket-label">{{events[14]}}</span>
+                                                <span class="input-group-text" id="ticket-price">{{events[7]}}</span>
+                                                <input id="ticket-num" type="number" min="1" placeholder="1" value="1" class="form-control" aria-label="Ticket Number" aria-describedby="ticket-label" onchange="updateTickets()">  
+                                            </div>
+                                            <h6>Details:</h6>
+                                            <h6 id="total-cost" class="card-text">Total Cost: $$$</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                </div>
+                                    <button type="button" class="btn btn-primary">Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

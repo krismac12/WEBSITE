@@ -1,0 +1,4 @@
+DB_HOST = "127.0.0.1"
+DB_NAME = "TODO"
+DB_PASS = "TODO"
+DB_USER = "TODO"

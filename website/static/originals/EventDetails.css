@@ -1,0 +1,110 @@
+/* GLOBAL STYLES - EVENT DETAILS
+-------------------------------------------------- */
+*{
+  padding: 10;
+  margin: 10;
+}
+
+html {
+position: relative;
+min-height: 100%;
+}
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #000000;
+}
+
+
+ 
+/* HEADER STYLES
+-------------------------------------------------- */
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+  
+  .text-small {
+    font-size: 85%;
+  }
+
+
+  
+  /* MAIN BODY STYLES
+  -------------------------------------------------- */
+  /* Banner Image */
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* Buy Now Button */
+.buynow {
+  position: center;
+  width: 100%;
+  max-width: 250px;
+  
+}
+
+.buynow .btn {
+  position: absolute;
+  top: 300px;
+  left: 1275px;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgb(148, 226, 141);
+  background-color: rgb(148, 226, 141);
+  color: black;
+  padding: 10px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Main Body text Style */
+.maintext p {
+  text-align: justify;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+.maintext p1 {
+  text-align: justify;
+  font-weight: 400;
+  margin-bottom: 30px;
+  
+}
+
+.maintext p2 {
+  font-weight: 400;
+  letter-spacing: 3px; 
+}
+
+.maintext p3 {
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 14px;
+  color: blue;
+}
+
+.maintext h1{
+  margin-left:30px;
+}
+
+  
+  
+
+/* Footer */
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
