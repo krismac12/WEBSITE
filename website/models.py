@@ -34,6 +34,8 @@ class Event(db.Model):
     end_date = db.Column(db.DateTime, default=datetime.now())
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
+    user_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
+
     reviews = db.relationship('Review', backref='Event')
 
     

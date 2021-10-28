@@ -42,6 +42,22 @@ class Create(FlaskForm):
       FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])       
     submit = SubmitField("Save Event")
 
+class Edit(FlaskForm):
+    name = StringField('Event Name')
+    description = TextAreaField('Description')
+    long_description = TextAreaField('Long Description')
+    organiser  = StringField('Organiser')
+    type = StringField('Type')
+    ticket_price = IntegerField('Ticket Price')     
+    street = StringField('Street')     
+    city = StringField('City')     
+    state = StringField('State')
+    postcode = StringField('Postcode')
+    start_date = DateTimeLocalField('Start Date/Time', format='%Y-%m-%dT%H:%M')
+    end_date = DateTimeLocalField('End Date/Time',format='%Y-%m-%dT%H:%M')
+    image = FileField('Destination Image', validators=[FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])       
+    submit = SubmitField("Save Event")
+
 class ReviewForm(FlaskForm):
     Text = TextAreaField('Review Text', validators=[InputRequired()])
     submit = SubmitField("Post Review")

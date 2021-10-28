@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-12 col-lg-12">
+    <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 pb-2">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                <a href="#"
+                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span class="fs-4">Events</span>
+                </a>
+                <hr>
+
+                <ul>
+                    <a1 href="#" class="nav-link link-dark">Dashboard</a1>
+                    <a1 href="#" class="nav-link link-dark">Order Options</a1>
+                    <a1 href="#" class="nav-link link-dark">Payment and Tax</a1>
+                    <a1 href="#" class="nav-link link-dark">Refunds and Credits</a1>
+                    <hr>
+                    <a1 href="#" class="nav-link link-dark">Privacy Settings</a1>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 pb-2 pt-2">
+            <div class="album pt-2 pb-4">
+                <div class="container">
+                    <h1>My Events</h1>
+                    <hr class="m-2">
+                    <br>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+                        {% for event in events %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="{{event.image}}" class="card-img-top" alt="..." width=100% height="225">
+
+                                <div class="card-body">
+                                    <h3>{{event.name}}</h3>
+                                    <p class="card-text">{{event.description}}
+                                    </p>
+                                    <div class="btn-group">
+                                        <a  href="{{url_for('main.details', id=event.id)}}"type="button"
+                                            class="btn btn-sm btn-outline-secondary">View</a>
+                                            <a  href="{{url_for('main.edit', id = event.id)}}"type="button"
+                                            class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    </div>                                  </div>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+{% endblock %}

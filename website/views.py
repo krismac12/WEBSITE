@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 from website.models import Event , Review
 from . import db
 import os
-from website.forms import Create, ReviewForm
+from website.forms import Create, ReviewForm, Edit
 from .models import *
 import datetime
 
@@ -44,7 +44,7 @@ def passed():
     FirstEvent = Event.query.first()
     Carosels = Event.query.filter(Event.id.between(2, 4))
     current = datetime.datetime.now()
-    Events = Event.query.filter(Event.start_date <= current)     
+    Events = Event.query.filter(Event.start_date <= current, Event.end_date >= current)     
     # testing template variable input
     # 1: brunch, 2: bordeaux, 3: graze, 4: dim sum, 5: donut, 6: senses, 7: beer, 8: book, 9: massimo
 
@@ -76,7 +76,8 @@ def create():
         description = createForm.description.data, type = createForm.type.data,
         street = createForm.street.data, city = createForm.city.data, state = createForm.state.data,
         postcode = createForm.postcode.data, image = file_path, start_date = createForm.start_date.data,
-        end_date = createForm.end_date.data, long_description = createForm.long_description.data, ticket_price = createForm.ticket_price.data )
+        end_date = createForm.end_date.data, long_description = createForm.long_description.data, 
+        ticket_price = createForm.ticket_price.data, user_id = current_user.id )
         # add the object to the db session
         db.session.add(event)
         # commit to the database
@@ -134,6 +135,9 @@ def details(id):
     heading = "Event Details",
     events = events,
     Reviews = Reviews, form = form)
+
+
+
 @bp.route('/booking-history')
 def history():
     books = db.session.query(Booked_Event).filter_by(user_id = current_user.id).all()
@@ -153,3 +157,45 @@ def book(id):
         db.session.add(booked)
         db.session.commit()
     return redirect(url_for('main.index'))
+
+@bp.route('/My-Events')
+def My_Events():
+    events = db.session.query(Event).filter_by(user_id = current_user.id).all()
+    return render_template('my_event.html',events = events )
+
+@bp.route('/Edit<id>', methods = ['GET', 'POST'])
+def edit(id):
+    form = Create()
+    event = db.session.query(Event).filter_by(id = id).first()
+    if form.validate_on_submit():
+        file_path=check_upload_file(form)
+        event.name = form.name.data
+        event.description = form.description.data
+        event.long_description = form.long_description.data
+        event.ticket_price = form.ticket_price.data
+        event.organiser = form.organiser.data
+        event.type = form.type.data
+        event.street = form.street.data
+        event.city = form.city.data
+        event.state = form.state.data
+        event.postcode = form.postcode.data
+        event.image = file_path
+        event.start_date = form.start_date.data
+        event.end_date = form.end_date.data
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('create.html', form = form)
+
+def check_upload_file(form):
+  #get file data from form  
+  fp=form.image.data
+  filename=fp.filename
+  #get the current path of the module file… store image file relative to this path  
+  BASE_PATH=os.path.dirname(__file__)
+  #upload file location – directory of this file/static/image
+  upload_path=os.path.join(BASE_PATH,'static/img',secure_filename(filename))
+  #store relative path in DB as image location in HTML is relative
+  db_upload_path='/static/img/' + secure_filename(filename)
+  #save the file and return the db upload path  
+  fp.save(upload_path)
+  return db_upload_path

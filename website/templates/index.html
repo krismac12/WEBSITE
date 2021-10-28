@@ -65,7 +65,7 @@
                     <a class="nav-link" href="{{url_for('main.upcoming')}}">Upcoming</a>
                 </li>
                 <li class="nav-item pill-3">
-                    <a class="nav-link" href="{{url_for('main.passed')}}">Passed</a>
+                    <a class="nav-link" href="{{url_for('main.passed')}}">Ongoing</a>
                 </li>
                 <li class="nav-item pill-4">
                     <a class="nav-link" href="{{url_for('main.week')}}" tabindex="-1" aria-="true">This Week</a>
@@ -87,6 +87,8 @@
                                     <br>
                                     {% if event.start_date >= current %}
                                     <p3>Upcoming</p3>
+                                    {% elif event.end_date >= current %}
+                                    <p3>Ongoing</p3>
                                     {% else %}
                                     <p3>Passed</p3>
                                     {% endif %}
