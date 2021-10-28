@@ -9,6 +9,7 @@ from . import db
 import os
 from website.forms import Create, ReviewForm
 from .models import *
+import datetime
 
 bp = Blueprint('main', __name__)
 
@@ -17,7 +18,47 @@ def index():
     FirstEvent = Event.query.first()
     Carosels = Event.query.filter(Event.id.between(2, 4))
     Events = Event.query.all()
-    current = datetime.now()    
+    current = datetime.datetime.now()    
+    # testing template variable input
+    # 1: brunch, 2: bordeaux, 3: graze, 4: dim sum, 5: donut, 6: senses, 7: beer, 8: book, 9: massimo
+
+    return render_template('index.html',
+    events=Events,
+    carosels=Carosels, current = current, First = FirstEvent)
+
+@bp.route('/upcoming')
+def upcoming():
+    FirstEvent = Event.query.first()
+    Carosels = Event.query.filter(Event.id.between(2, 4))
+    current = datetime.datetime.now()
+    Events = Event.query.filter(Event.start_date >= current)     
+    # testing template variable input
+    # 1: brunch, 2: bordeaux, 3: graze, 4: dim sum, 5: donut, 6: senses, 7: beer, 8: book, 9: massimo
+
+    return render_template('index.html',
+    events=Events,
+    carosels=Carosels, current = current, First = FirstEvent)
+
+@bp.route('/passed')
+def passed():
+    FirstEvent = Event.query.first()
+    Carosels = Event.query.filter(Event.id.between(2, 4))
+    current = datetime.datetime.now()
+    Events = Event.query.filter(Event.start_date <= current)     
+    # testing template variable input
+    # 1: brunch, 2: bordeaux, 3: graze, 4: dim sum, 5: donut, 6: senses, 7: beer, 8: book, 9: massimo
+
+    return render_template('index.html',
+    events=Events,
+    carosels=Carosels, current = current, First = FirstEvent)
+
+@bp.route('/week')
+def week():
+    FirstEvent = Event.query.first()
+    Carosels = Event.query.filter(Event.id.between(2, 4))
+    current = datetime.datetime.now()
+    nextweek = current + datetime.timedelta(days=7)
+    Events = Event.query.filter(Event.start_date.between(current, nextweek))    
     # testing template variable input
     # 1: brunch, 2: bordeaux, 3: graze, 4: dim sum, 5: donut, 6: senses, 7: beer, 8: book, 9: massimo
 

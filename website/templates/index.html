@@ -59,16 +59,16 @@
 
             <ul class="nav nav-pills border-bottom border-dark pb-1 pt-2">
                 <li class="nav-item pill-1">
-                    <a class="nav-link active" href="#">All</a>
+                    <a class="nav-link active" href="/">All</a>
                 </li>
                 <li class="nav-item pill-2">
-                    <a class="nav-link" href="#">For You</a>
+                    <a class="nav-link" href="{{url_for('main.upcoming')}}">Upcoming</a>
                 </li>
                 <li class="nav-item pill-3">
-                    <a class="nav-link" href="#">Charity and Causes</a>
+                    <a class="nav-link" href="{{url_for('main.passed')}}">Passed</a>
                 </li>
                 <li class="nav-item pill-4">
-                    <a class="nav-link" href="#" tabindex="-1" aria-="true">This Week</a>
+                    <a class="nav-link" href="{{url_for('main.week')}}" tabindex="-1" aria-="true">This Week</a>
                 </li>
             </ul>
 
